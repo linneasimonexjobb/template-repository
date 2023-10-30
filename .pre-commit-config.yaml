@@ -1,0 +1,21 @@
+---
+
+# Here you may define what pre-commits you want to add to the repo. There are both pre-commit hooks and 3rd party hooks to use
+# Please read https://pre-commit.com/hooks.html
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v2.3.0
+  hooks:
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-added-large-files
+    args: ['--maxkb=2048']
+  - id: detect-private-key
+
+-   repo: https://github.com/commitizen-tools/commitizen
+    rev: 3.12.0
+    hooks:
+    -   id: commitizen
+        stages:
+        - commit-msg

@@ -1,0 +1,57 @@
+---
+name: template-example
+
+on:
+  push:
+    branches-ignore:
+      - main        # Use branches instead of pushing directly to main
+    paths-ignore:
+      - 'wiki/**'
+
+permissions:
+  contents: read # The workflow is read only
+
+# Ensures that only one workflow per branch/environment will be run
+concurrency:
+  group: ${{ github.head_ref || github.ref_name }} 
+  cancel-in-progress: true
+
+jobs:      
+  run_project:
+    runs-on: ubuntu-22.04   # Change to linux, macos or windows. To run multiple os:es, see https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    timeout-minutes: 30 #job times out after 30 mins
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup x
+        run: echo "set up project here" # Define what language, versions etc here. Sometimes you may not need it
+
+    # Cache dependencies for faster workflow
+      - name: Cache dependencies
+        uses: actions/cache@v3
+
+
+      - name: Install dependencies
+        run: echo "install dependencies"
+
+      - name: Linting
+        run: echo "run lint" # Define how the lint will be run
+  
+      - name: Build
+        run: echo "build project" # Change this to your build command
+
+      - name: Run Tests
+        run: echo "run tests" # change this to your test command, you may need to run multiple tests here, such as unit, e2e, integration etc.
+
+      - name: Retrieve unit test coverage
+        run: |
+          echo "generate test files" # most tests frameworks can generate a json or txt file which data such as total lines/functions/etc covererd.
+          COVERAGE_VAR=$(jq -r '.your.json.file.format' < testfile.json) # IF json file, change your.json.file to the correct query and testfile to correct file
+          if [[ $COVERAGE_VAR -lt 80 ]]; then  # Adjust threshold as needed
+            echo "::warning::Coverage below threshold (${COVERAGE_VAR}). \
+            Please improve test coverage." >> $GITHUB_STEP_SUMMARY 
+          else
+            echo "$COVERAGE_VAR % line coverage"
+          fi
