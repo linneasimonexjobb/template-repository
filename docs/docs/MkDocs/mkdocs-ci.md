@@ -1,28 +1,63 @@
 # MkDocs CI
 
-To keep the documentation updated. A CI is used to validate the changes made to the wiki page. For now, GitHub Actions is used to run a CI/CD and deploy to GitHub pages. This might change in the future but the file is situated in `.github/workflows/mkdocs.yml`.
-The CI runs MkDocs when a change is merged into the main branch, this updates the gh-deploy branch with the update and is deployed to gh-pages. Cool.
-
-
-
+To keep the documentation updated. A CI is used to validate the changes made to the wiki page. For now, GitHub Actions is used to run a CI/CD to lint the markdown files, check that links are not broken and deploy to gh-pages. This might change in the future but the file is situated in `.github/workflows/mkdocs.yml`.
+The CI runs when any of the MkDocs files has been updated and the CD to gh-pages
 
 ```yaml
 name: mkdocs-ci
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'docs/**'
+  pull_request:
+    paths:
+      - 'docs/**'
 
 permissions:
   contents: write
 
 jobs:
+
+  super-linter:
+    name: Lint Markdown files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cache Super Linter dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.super-linter
+          key: superlinter-ubuntu-${{ runner.os }}-${{ hashFiles('**/*.md') }}
+          restore-keys: |
+            superlinter-ubuntu-${{ runner.os }}-
+
+      - name: Lint Markdown files
+        uses: github/super-linter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILTER_REGEX_INCLUDE: \.md$
+
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: gaurav-nelson/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        config-file: 'mlc_config.json'
+        folder-path: 'wiki/'
+
   deploy:
+    if: github.event.pull_request.merged == true
+    needs: [super-linter, markdown-link-check] 
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -38,4 +73,5 @@ jobs:
           cd wiki
           mkdocs build
           mkdocs gh-deploy --force
+
 ```

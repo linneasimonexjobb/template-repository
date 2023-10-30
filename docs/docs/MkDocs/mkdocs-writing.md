@@ -45,10 +45,16 @@ nav:
   - GitHub issues and kanban board:
     - Issues: 'github/issues.md'
     - Kanban board: 'github/kanban.md'
-
 ```
 
 We recommend using folders to keep the md files organized. If the project contains many folders, a good rule of thumb is
 to have a md file for every folder, explaining what the folder contains
 
 For more information about plugins, please read the documentation provided: [squidfunk](https://squidfunk.github.io/mkdocs-material/plugins/)
+
+
+## Url routing
+The url routing is based on where the md file is situated. For example, the file ```MkDocs/mkdocs-writing.md ``` will pass the routing  ``` http://127.0.0.1:8000/MkDocs/mkdocs-writing/``` . This is another reason why keeping the is seperate folders 
+less complex to understand. Also, having multiple files under same `nav:` routing to the different markdown files will be created. See picture below where `Writing MkDocs` and `CI/CD with MkDocs` are different routed.
+
+![Screenshot](/../pictures/mkdocs.png)
