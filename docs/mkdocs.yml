@@ -42,9 +42,10 @@ nav:
     - 'Contiuous integration': 'CI/ci.md'
   - Git prehooks:
     - 'prehooks': 'git/prehooks.md'
-  - GitHub issues and kanban board:
+  - GitHub:
     - Issues: 'github/issues.md'
     - Kanban board: 'github/kanban.md'
+    - GitHub Actions: 'github/actions.md'
 
 markdown_extensions:
   - pymdownx.highlight:
