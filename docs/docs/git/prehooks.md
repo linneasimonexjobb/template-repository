@@ -1,33 +1,32 @@
 # Pre-hooks
-Git pre-hooks are scripts that you can use to enforce certain criteria or perform checks before a Git operation is executed. They are useful for ensuring code quality, running tests, or preventing commits that do not meet specific standards.
+Pre-hooks, in the context of version control systems like Git, refer to scripts that are run before the execution of Git commands, typically before the staging of files or the creation of a commit. They are a part of the pre-commit framework that allows you to set up hooks to enforce certain guidelines or checks before allowing a commit to proceed.
 
-The pre-hook scripts can be written in any scripting language such as Bash, Python, or Ruby, depending on your requirements and preferences. The main pre-hooks that Git supports are:
+In the case of the pre-commit Python package, it provides a framework for managing and maintaining multi-language pre-commit hooks. These hooks can be used to automatically check your code for issues before you commit it. This can include tasks like checking for trailing whitespace, running tests, or enforcing specific code formatting guidelines.
 
-pre-commit: This hook is invoked before a commit is created. It can be used to inspect the snapshot that is about to be committed.
+By integrating pre-commit into your workflow, you can ensure that certain checks and tests are performed automatically before your changes are committed, helping maintain code quality and consistency across your project. This can be especially useful in collaborative environments to enforce consistent standards and reduce the likelihood of introducing errors or inconsistencies into the codebase.
 
-pre-rebase: This hook is invoked before a branch is rebased. It can be used to ensure that the branch being rebased is in a suitable state.
+## Why python pre-commit and not change the .git folder?
+Best practises are that using a 3rd party plugin to alter, it becomes more streamlined which is beneficiary in a collaborative enviroment.
+This limits of course the usage to specific plugins and customizable hooks. But the amount of plugins and the ease is worth it.
 
-pre-receive: This hook is invoked on the remote repository once it has received a push but before it updates any refs. It can be used to check the pushed commits for consistency and quality.
+## Getting started
+What you need:
+- Python 3.x
 
-pre-push: This hook is invoked before a push to a remote repository is executed. It can be used to ensure that the pushed changes meet certain criteria.
+To download pre-commit use `pip install pre-commit`.
 
+After installment, a `.pre-commit-config.yaml` is needed to install pre-hooks to the project. A template with naitive and 3rd party plugins has been created.
+For larger project we recommend using all of them, specially commitzen to create valuable commit message. But it is up to each project to bring valuable plugins. Please look at the [pre-hook](https://github.com/pre-commit/pre-commit-hooks) to find some out-of-the-box pre-hooks that is avaiable.
 
-## Pre-commit
-Git pre-commit hooks are scripts that run before the commit is created. They can be used to inspect the snapshot that is about to be committed and to ensure that it passes certain criteria.
-If the script exits with a non-zero status, the commit is aborted. Pre-commit hooks are useful for tasks such as checking for trailing whitespace, ensuring commit messages follow a certain
-pattern, or running tests before allowing a commit.
+## Install pre-hooks
+After choosing pre-hooks, to install use:
 
-To set up a Git pre-commit hook, follow these steps:
+`pre-hooks install` to install general pre-hooks.
 
-Navigate to the .git directory of your project.
+To install specific hook types, you need to install using the `--hook-type` flag:
 
-Go to the hooks subdirectory. If it doesn't exist, you can create it.
+For example:
 
-Create a new file named pre-commit (without any file extension) in the hooks directory.
+`pre-commit install --hook-type commit-msg`
 
-### Commit message
-With pre-commit, a set of specified tags can be enforced using git. For example you may need to tag the commit with dev, test, bug etc to know what the commit did. A decription may also be added that requires specific characteristics to be passed.
-This can ofcourse be turned of if the developer may find it too enforcing. However, we recommed having some kind of pre-commit message requirement so valuable commit messages are only let through.
-
-### Prettier
-You may also use code styling enforcers before commiting your code. For example, prettier can change the code corretly directly.
+Please look at [pre-commit](https://pre-commit.com/) for more information
