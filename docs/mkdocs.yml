@@ -39,7 +39,8 @@ nav:
     - 'Writing MkDocs': 'MkDocs/mkdocs-writing.md'
     - 'CI/CD With MkDocs': 'MkDocs/mkdocs-ci.md'
   - CI/CD:
-    - 'Contiuous integration': 'CI/ci.md'
+    - 'Contiuous Integration': 'CI/ci.md'
+    - 'Continious Delivery': 'CI/cd.md'
   - Git prehooks:
     - 'prehooks': 'git/prehooks.md'
   - GitHub:
