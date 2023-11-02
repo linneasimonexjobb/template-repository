@@ -21,6 +21,67 @@ Material for MkDocs integrates sleek design elements, such as responsive layouts
 This theme also supports various customization options, allowing users to fine-tune the appearance of their documentation to suit their specific branding and style preferences. With its emphasis on usability and visual appeal,
 Material for MkDocs is a favored choice for developers and teams seeking to elevate the presentation of their project documentation.
 
+## How to run MkDocs
+Project Initialization: Create a new MkDocs project using the following command:
+
+```
+mkdocs new my-project
+```
+
+Content Creation: Add your documentation content in Markdown format to the docs/ directory within your project. Organize your files and folders to reflect the structure of your documentation.
+
+Preview Locally: To preview your documentation site locally, use the following command:
+
+```
+mkdocs serve
+```
+This command will launch a development server, allowing you to view your documentation website in your web browser at http://localhost:8000.
+
+Build: Once you are satisfied with the changes, build the static site using the following command:
+
+```
+mkdocs build
+```
+This command generates a static HTML site in the site/ directory, ready for deployment.
+
+The mkdocs workflow handles the deployment to gh-pages. However, if one may need to generate it manually the command:
+
+```
+mkdocs gh-deploy
+```
+Creates a mkdocs branch and pushes the code to gh-pages.
+
+NOTE!!!
+This way is not recommended if one want to follow the docs-as-code philosophy, the md files should be pushed with a pr, tested and code reviewed before deployed.
+
+## Formatting, grids, icons etc.
+With material for MkDocs you can create a lot of different references (math, diagrams, grids).
+
+Some examples including
+
+Flowcharts:
+``` mermaid
+graph LR
+  A[Start] --> B{Error?};
+  B -->|Yes| C[Hmm...];
+  C --> D[Debug];
+  D --> B;
+  B ---->|No| E[Yay!];
+```
+
+Data tabels:
+
+| Method      | Description                          |
+| ----------- | ------------------------------------ |
+| `GET`       | :material-check:     Fetch resource  |
+| `PUT`       | :material-check-all: Update resource |
+| `DELETE`    | :material-close:     Delete resource |
+
+Images:
+
+![Cat](/../pictures/cat.jpg){ width="300" }
+
+Please read [this](https://squidfunk.github.io/mkdocs-material/reference/) for more information about references
 ## Configuring MkDocs
 In the `mkdocs.yml` file situated in the root of the wiki one could add or remove features of MkDocs. We recommend using the plugins provided to streamline all Greenhouse projects with same template.
 
@@ -29,22 +90,21 @@ To add headers and files, the `nav:` needs to be updated. Here you can see how t
 ```yaml
 nav:
   - Home: 'index.md'
-  - Project: 
-    - 'Structure': 'Project/project.md'
-    - 'Test': 'Project/testing/test.md'
-    - Source:
-      - 'src': 'Project/src/src.md'
-      - 'components': "Project/src/components/components.md"
   - MkDocs:
     - 'Writing MkDocs': 'MkDocs/mkdocs-writing.md'
     - 'CI/CD With MkDocs': 'MkDocs/mkdocs-ci.md'
   - CI/CD:
-    - 'Contiuous integration': 'CI/ci.md'
+    - 'Contiuous Integration': 'CI/ci.md'
+    - 'Continious Delivery': 'CI/cd.md'
   - Git prehooks:
     - 'prehooks': 'git/prehooks.md'
-  - GitHub issues and kanban board:
+  - GitHub:
     - Issues: 'github/issues.md'
-    - Kanban board: 'github/kanban.md'
+    - Project board: 'github/projectboard.md'
+    - GitHub Actions: 'github/actions.md'
+    - Copilot: 'github/copilot.md'
+    - Automated notifications: 'github/notifications.md'
+  - Meetings:  'meetings/meetings.md'
 ```
 
 We recommend using folders to keep the md files organized. If the project contains many folders, a good rule of thumb is

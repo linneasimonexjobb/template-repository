@@ -29,12 +29,6 @@ theme:
 
 nav:
   - Home: 'index.md'
-  - Project: 
-    - 'Structure': 'Project/project.md'
-    - 'Test': 'Project/testing/test.md'
-    - Source:
-      - 'src': 'Project/src/src.md'
-      - 'components': "Project/src/components/components.md"
   - MkDocs:
     - 'Writing MkDocs': 'MkDocs/mkdocs-writing.md'
     - 'CI/CD With MkDocs': 'MkDocs/mkdocs-ci.md'
@@ -45,10 +39,22 @@ nav:
     - 'prehooks': 'git/prehooks.md'
   - GitHub:
     - Issues: 'github/issues.md'
-    - Kanban board: 'github/kanban.md'
+    - Project board: 'github/projectboard.md'
     - GitHub Actions: 'github/actions.md'
+    - Copilot: 'github/copilot.md'
+    - Automated notifications: 'github/notifications.md'
+  - Meetings:  'meetings/meetings.md'
+
+
 
 markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
@@ -60,7 +66,6 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.mark
-  - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg

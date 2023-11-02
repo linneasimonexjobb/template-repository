@@ -12,7 +12,16 @@ The CI runs with the steps:
 | -----------     | ------------------------------------ |
 | Lint      | Linting is used to verify that the code is properly structured, GitHub super-lint is used but can be changed to whatever the devs find appropriate  |
 | Build  | The project should be built, here you may use cmake, npm build etc |
-| test         | Atleast basic unit test should be used in the project |
+| Test         | Atleast basic unit test should be used in the project |
+| Test coverage         | Test coverage should be included, but only warn a developer if it is below a certain threshhold |
+
+It is possible to add or remove certain steps if the project allows it. 
+
+## Adding more test suites
+Unit test should always be included in the CI build. Based on what project you are working on, other kind of testing could be applied. 
+
+An important note is that the more expensive the test suites are the more mintues it will take from GitHub. We recommend therefore to use
+testing techniques such as e2e only when using PR.
 
 
 
@@ -83,8 +92,3 @@ jobs:
 You need to change the steps to accomodate what language and framework the project is using. 
 
 
-## Adding more test suites
-Unit test should always be included in the CI build. Based on what project you are working on, other kind of testing could be applied. 
-
-An important note is that the more expensive the test suites are the more mintues it will take from GitHub. We recommend therefore to use
-testing techniques such as e2e only when using PR.

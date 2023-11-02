@@ -57,4 +57,20 @@ jobs:
 
 ```
 
-This template creates a docker image 
+This template creates a docker image and releases it to the package manager in github. To deploy to AWS or Azue further steps need to be taken.
+
+If a docker image is not avaiable to deploy, one may use the github artifacts deploy an artifact to the specific deployment. This would be created by using:
+
+```yaml
+
+  - name: 'Upload Artifact'
+    uses: actions/upload-artifact@v3
+    with:
+      name: my-artifact
+      path: my_file.txt
+
+```
+
+See more at [storing workflow data as artifacts](https://docs.github.com/en/actions/using-workflows/storing-workflow-data-as-artifacts)
+
+
