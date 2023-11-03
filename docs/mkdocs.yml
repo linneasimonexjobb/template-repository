@@ -28,7 +28,8 @@ theme:
       accent: lime
 
 nav:
-  - Home: 'index.md'
+  - The Wiki: 'index.md'
+  - Project: 'project/project.md'
   - MkDocs:
     - 'Writing MkDocs': 'MkDocs/mkdocs-writing.md'
     - 'CI/CD With MkDocs': 'MkDocs/mkdocs-ci.md'
@@ -38,11 +39,10 @@ nav:
   - Git prehooks:
     - 'prehooks': 'git/prehooks.md'
   - GitHub:
-    - Issues: 'github/issues.md'
-    - Project board: 'github/projectboard.md'
+    - Issues and Project board: 'github/issues.md'
     - GitHub Actions: 'github/actions.md'
     - Copilot: 'github/copilot.md'
-    - Automated notifications: 'github/notifications.md'
+    - Automated notifications (webhooks): 'github/notifications.md'
   - Meetings:  'meetings/meetings.md'
 
 

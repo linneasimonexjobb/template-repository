@@ -1,4 +1,3 @@
-# Home
 Welcome to this example wiki. In here there are guides on how to set up a project using MkDocs, git-prehooks, CI/CD, Docker, issue tracking and other means to make the greenhouse process a bit more streamlined. The integration of documentation follows a light version of [docs-as-code](https://www.writethedocs.org/guide/docs-as-code/), such as version control, markdown, code reviews and automated tests are followed. We advice reading through just the first page to get comfortable with the philosphy.
 
 Everything done here is just an example and one may use the template, or alter things if you deem neccecary.
@@ -25,17 +24,3 @@ project_root/
 └── site/ (auto-generated)
 ```
 MkDocs only support two layers of nesting, so making use of md headers within each folder is crucial.
-
-## Purpose of project
-Write down a few sentences what you are trying to achieve with the project. This helps with setting a goal and help others understand what the purpose is.
-
-
-## Requirments
-If you have any technical or non-technical requirements, it could declared here with the help of tables, for example:
-
-
-| Requirement     | Description                     |
-| -----------     | ------------------------------------ |
-| Login user      | One may only authorize once  |
-| Delete message  | A user should be able to delete messages |
-| Logout          | a User should be able to logout from the site |

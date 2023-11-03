@@ -2,6 +2,20 @@ Deployment to providers like AWS and Azure can be done using a continious delive
 
 Though this template does not provide any guide to deploy to these instances, it provides a template how to either create an artifact that is generated when running the deployment or creating a Docker image to be deployed to gihub packages.
 
+
+## Docker
+Docker is a platform that enables developers to build, package, and distribute applications and their dependencies in a standardized and consistent way. It uses containerization technology to create lightweight, portable, and self-sufficient containers that can run on any machine with the Docker platform installed, regardless of the underlying operating system.
+
+Here's a breakdown of how Docker can be used in a package deployment on GitHub:
+
+Containerization: Docker allows you to package your application along with its dependencies and configuration files into a container. This container encapsulates the application's runtime environment, making it easy to deploy consistently across various environments.
+
+Dockerfile: To use Docker in a package deployment on GitHub, you first create a Dockerfile. This file contains instructions for building a Docker image, specifying the base image, environment variables, application dependencies, and other configurations required to run your application within a Docker container.
+
+Build Docker Image: With the Dockerfile in place, you build a Docker image using the docker build command. This command reads the instructions from the Dockerfile and creates a Docker image that encapsulates your application and its dependencies.
+
+Container Registry: Once the Docker image is built, it can be pushed to a container registry, such as Docker Hub or GitHub Container Registry (now GitHub packages). This step is crucial for sharing and distributing your Docker image so that it can be easily pulled and deployed on various systems.
+
 ## CD template
 
 A template of a CD is created in `.github/workflows/deployment.yml`
