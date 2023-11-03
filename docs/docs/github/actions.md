@@ -13,3 +13,12 @@ Environment and Platform Flexibility: GitHub Actions supports a wide range of pr
 Integration with External Services: GitHub Actions can be integrated with various external services and tools, allowing developers to incorporate third-party services seamlessly into their development workflows. This integration capability enables tasks such as notifications, issue tracking, and deployment to external hosting platforms.
 
 Monitoring and Logging: GitHub Actions provides detailed logs for each workflow run, enabling developers to monitor the execution of tasks and debug any issues that may arise during the automation process. This feature helps in identifying and resolving potential issues quickly.
+
+
+## GitHub Actions Marketplace
+
+[View Marketplace](https://github.com/marketplace?type=actions)
+
+The GitHub Actions Marketplace essentially served as a centralized hub for sharing and finding these actions. It allowed developers to explore a wide range of pre-built actions created by the GitHub community and other third-party developers. These actions could be easily integrated into a workflow to automate various tasks, such as code compilation, testing, deployment, and more.
+
+Huge recommendation to look through the marketplace to find out how you can custimise your workflow to fit your project, frameworks and tools. 
