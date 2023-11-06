@@ -6,8 +6,8 @@ In the case of the pre-commit Python package, it provides a framework for managi
 By integrating pre-commit into your workflow, you can ensure that certain checks and tests are performed automatically before your changes are committed, helping maintain code quality and consistency across your project. This can be especially useful in collaborative environments to enforce consistent standards and reduce the likelihood of introducing errors or inconsistencies into the codebase.
 
 ## Why python pre-commit and not change the .git folder?
-Best practises are that using a 3rd party plugin to alter, it becomes more streamlined which is beneficiary in a collaborative enviroment.
-This limits of course the usage to specific plugins and customizable hooks. But the amount of plugins and the ease is worth it.
+Implementing a third-party plugin to make alterations is a best practice that creates a streamlined collaborative enviroment.
+While this approach may restrict the use to specific plugins and customizable hooks, the wide array of available plugins and the ease of implementation more than compensate for any limitations.
 
 ## Getting started
 What you need:

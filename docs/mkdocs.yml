@@ -34,10 +34,10 @@ nav:
     - 'Writing MkDocs': 'MkDocs/mkdocs-writing.md'
     - 'CI/CD With MkDocs': 'MkDocs/mkdocs-ci.md'
   - CI/CD:
-    - 'Contiuous Integration': 'CI/ci.md'
-    - 'Continious Delivery': 'CI/cd.md'
-  - Git prehooks:
-    - 'prehooks': 'git/prehooks.md'
+    - 'Continuous Integration': 'CI/ci.md'
+    - 'Continuous Delivery': 'CI/cd.md'
+  - Git Pre-hooks:
+    - 'Pre-hooks': 'git/prehooks.md'
   - GitHub:
     - Issues and Project board: 'github/issues.md'
     - GitHub Actions: 'github/actions.md'

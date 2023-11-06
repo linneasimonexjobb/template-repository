@@ -25,8 +25,6 @@ When the pull request is merged, the issue will automatiaclly be closed, and the
 ## Project boards
 GitHub Project Boards are a powerful project management feature that helps teams organize, prioritize, and track their work directly within GitHub in the form of a Kanban board. These boards provide a visual way to manage GitHub issues and pull requests, making it easier for teams to collaborate and stay organized. 
 
-![project](/../pictures/board.png)
-
 ### Project board beta
 As of writing this (02/11/23), GitHub as revamped project board to exclude Github Actions workflows, today they are working with templates which is in beta. So this guide can be changed in the future.
 
