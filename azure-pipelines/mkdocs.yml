@@ -1,0 +1,34 @@
+trigger:
+  paths:
+    include:
+      - wiki/**
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- checkout: self
+
+# Lint markdown files
+- script: |
+    npm install markdownlint-cli
+    markdownlint wiki/**/*.md  
+  displayName: 'Run markdownlint'
+
+# Broken link check
+- script: |
+    npm install markdown-link-check
+    markdown-link-check wiki/**/*.md  
+  displayName: 'Check for broken links in Markdown files'
+
+# Build mkdocs
+- script: |
+    pip install mkdocs-material pillow cairosvg
+    cd wiki && mkdocs build --clean
+  displayName: 'Build MkDocs'
+
+# create an artifact of the static html
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/wiki/site' # Path to the MkDocs site directory
+    ArtifactName: 'mkdocs-site'

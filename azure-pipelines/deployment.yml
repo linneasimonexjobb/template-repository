@@ -1,0 +1,24 @@
+# Build Docker image and push to Docker Hub. 
+# REQ: Set up Service connection to Docker Hub in project settings.
+
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+- stage: Docker
+  jobs:
+  - job: BuildAndPushImage
+    displayName: 'Build and push Docker image to Docker Hub'
+    timeoutInMinutes: 10
+    steps:
+    - task: Docker@2
+      displayName: Build and Push
+      inputs:
+        command: buildAndPush
+        containerRegistry: your-registry-name # Name used in service connection
+        repository: your-repository/name # Repository name from Docker Hub
